@@ -249,3 +249,23 @@ This is the default mode. The system runs in parallal three threads: Tracking, L
 ### Localization Mode
 This mode can be used when you have a good map of your working area. In this mode the Local Mapping and Loop Closing are deactivated. The system localizes the camera in the map (which is no longer updated), using relocalization if needed. 
 
+
+
+### Demo测试
+#### Monocular实例测试
+在TUM数据集下载并解压一个序列，如：rgbd_dataset_freiburg1_desk1.tgz
+在ORB-SLAM2目录下创建一个文件夹Data将数据集放置在该文件夹下，并进行解压
+cd ORB-SLAM2
+mkdir Data
+tar -zxvf rgbd_dataset_freiburg1_desk.tgz
+./Examples/Monocular/mono_tum Vocabulary/ORBvoc.txt Examples/Monocular/TUM1.yaml Data/rgbd_dataset_freiburg1_desk
+
+#### RGB-D 实例测试
+在TUM数据集下载并解压一个序列，如：rgbd_dataset_freiburg2_pioneer_360.tgz
+在ORB-SLAM2目录下创建一个文件夹Data将数据集放置在该文件夹下，并进行解压
+python2 associate.py /home/cw/Slam/ORB_SLAM2_detailed_comments/Data/rgbd_dataset_freiburg2_pioneer_360/rgb.txt /home/cw/Slam/ORB_SLAM2_detailed_comments/Data/rgbd_dataset_freiburg2_pioneer_360/depth.txt > associations.txt
+
+./Examples/RGB-D/rgbd_tum Vocabulary/ORBvoc.txt ./Examples/RGB-D/TUM1.yaml ./Data/rgbd_dataset_freiburg2_pioneer_360 ./Examples/RGB-D/associations.txt 
+
+
+#### 跑自己的数据集
